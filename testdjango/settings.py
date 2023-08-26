@@ -30,7 +30,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['.vercel.app','.now.sh','127.0.0.1','locahost']
 
 
-CORS_ORIGIN_ALLOW_ALL=True
+CORS_ORIGIN_ALLOW_ALL=False
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000'
@@ -147,7 +147,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
 STATICFILES_DIRS = [
-   
+   os.path.join(BASE_DIR,"static_cdn"),
     os.path.join(BASE_DIR,'build','static'), 
 ]
 
@@ -155,6 +155,15 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+
+    'DEFAULT_SCHEMA_CLASS':'rest_framework.schemas.coreapî.AutoSchema',
+   
+    'DEFAULT_PERMISSION_CLASSES':[
+        'rest_framework.permissions.AllowAny'
+    ],
+}
 
 
 
