@@ -24,9 +24,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('data/', include('app.urls')),
-    path('client/' ,create_view,name='create_view'),
+    path('' ,create_view,name='create_view'),
      path('Encadreur/' ,create_view1,name='create_view2'),
-      path('' ,views.index,name='index')
+    #   path('' ,views.index,name='index')
  
 ]
 
