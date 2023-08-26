@@ -17,15 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from app.views import create_view,create_view1
-
+from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('data/', include('app.urls')),
-    path('' ,create_view,name='create_view'),
+    path('client/' ,create_view,name='create_view'),
      path('Encadreur/' ,create_view1,name='create_view2'),
+      path('' ,views.index,name='index')
  
 ]
 
