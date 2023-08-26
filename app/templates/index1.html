@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Bienvenu sur la page de finition de Serad   Education</h1>
+   
+    <h2>facture  de monsieu(madame) : {{ data.name }} </h2>
+    <h3>jour de repetition : {{ data.jours }}</h3>
+    <h3> matires : {{ data.matiere }}</h3>
+    <h3> lieux de residence : {{ data.ville }} au quartier  {{ data.street }}</h3>
+    <h3>motant a payer : (nombre de jour)x(nombre d'heure)x(nombre de matires)x(taux)
+       <h2>total = {{ count }}x{{ data.heure }}x{{ count2 }}x{{ data.Price }} </h2>
+       <h1>{{data.taux }}</h1> 
+    </h3>
+    
+      <h2> si vous etes satisfait cliquer sur le bouton envoyer et le tour est joué </h2>
+
+    {% if msg %}
+    <h1 style = "color: green;">{{msg}} </h1>
+        
+    
+    
+      {% endif %}
+   
+      
+
+    <form action="" method="post">
+        {% csrf_token %}
+   
+        <button type="submit" style = "color: green; width:100px;height: 50px;">envoyer</button>
+    </form>
+</body>
+</html>

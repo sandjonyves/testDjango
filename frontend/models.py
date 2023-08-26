@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class DataReact(models.Model):
     name = models.CharField(max_length=200)
@@ -30,4 +31,3 @@ class DataEncadreur(models.Model):
 
     def __str__(self):
         return self.name     
-    
