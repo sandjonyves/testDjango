@@ -61,7 +61,7 @@ def create_view(request, *arg,**kwargs):
                     'count2':count2,
                     'i':False}    
 
-    return  render(request, 'build/index.html',ctxx) 
+    return  render(request, 'index1.html',ctxx) 
 
 
 
@@ -110,7 +110,7 @@ def create_view1(request, *arg,**kwargs):
             ctxx ={"msg":"une erreur c'est produise veillez ressayer "
                   ,"data":data[i],}    
 
-    return  render(request, 'build/index2.html',ctxx) 
+    return  render(request, 'index2.html',ctxx) 
 
 class ListData(ListAPIView):
     queryset = DataReact.objects.all()
