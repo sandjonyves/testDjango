@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-xe$a&8dn!dq^g)cnaz%bx**gzk_@k^wq$%sdz%(hn_22^-a%_l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app','.now.sh','127.0.0.1','locahost', 'https://app-react-sandjonyves.vercel.app/']
+ALLOWED_HOSTS = ['.vercel.app','.now.sh','127.0.0.1','locahost', 'http://localhost:3000']
 
 
 CORS_ORIGIN_ALLOW_ALL=True
@@ -38,7 +38,7 @@ CORS_ORIGIN_WHITELIST = [
 ]
 CORS_ORIGIN_REGEX_WHITELIST = [
     'http://localhost:3000'
-    'https://app-react-sandjonyves.vercel.app/'
+    
 ]
 
 # Application definition
@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
-    'frontend',
+ 
     'rest_framework',
     'corsheaders',
 ]
@@ -90,24 +90,24 @@ WSGI_APPLICATION = 'testdjango.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        #'DATABASE_URL' : 'postgresql://postgres:TxnYYSWcsZBlk3d4PeH9@containers-us-west-200.railway.app:6276/railway',
-        'NAME' : 'railway',
-        'USER' : 'postgres',
-        'PASSWORD' : 'sBklcqwl1P8wACzCCmsl',
-        'HOST' : 'containers-us-west-54.railway.app',
-        'PORT' : '5736',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         #'DATABASE_URL' : 'postgresql://postgres:TxnYYSWcsZBlk3d4PeH9@containers-us-west-200.railway.app:6276/railway',
+#         'NAME' : 'railway',
+#         'USER' : 'postgres',
+#         'PASSWORD' : 'sBklcqwl1P8wACzCCmsl',
+#         'HOST' : 'containers-us-west-54.railway.app',
+#         'PORT' : '5736',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -146,12 +146,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR,'static')
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles_build','static')
 
-STATICFILES_DIRS = [
-   
-    os.path.join(BASE_DIR,'build','static'), 
-]
+STATICFILES_DIRS = os.path.join(BASE_DIR,'static'),
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
