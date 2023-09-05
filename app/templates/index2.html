@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
+       <!-- Bootstrap offline CSS -->
+	<link rel="stylesheet" type="text/css" href="{% static './css/bootstrap.min.css' %}">
+    <!-- fant-awesome -->
+    <script src="{% static './js/all.js' %}"></script>
+   <!--google-fonts -->
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;700&display=swap" rel="stylesheet">
+   <!--main css-->
+   <link rel="stylesheet" type="text/css" href="{% static './css/main.css' %}">  
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>serad</title>
 </head>
 <body>
  
-  <h2>Salut monsieur {{data.name}}  {{data.prenom}}  </h2>  
+  <h2>Salut monsieur(madame): {{data.name}}  {{data.prenom}}  </h2>  
 
 <h3> votre adresse Email: {{data.addEmail}}</h3>
  <h3> Votre numero de telephone :{{data.numTel}}</h3>  
@@ -23,8 +32,9 @@
 
  <form action="" method="post">
     {% csrf_token %}
-  
-    <button type="submit" style = "color: green; width:100px;height: 50px;">envoyer</button>
+  <button class="btn btn-danger">regeter</button>
+    <button type="submit" class="btn btn-success">envoyer</button>
 </form>
+<a  href="http://127.0.0.1:8000/" ></a>
 </body>
 </html>

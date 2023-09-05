@@ -27,16 +27,18 @@ SECRET_KEY = 'django-insecure-xe$a&8dn!dq^g)cnaz%bx**gzk_@k^wq$%sdz%(hn_22^-a%_l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app','.now.sh','127.0.0.1','locahost']
+ALLOWED_HOSTS = ['.vercel.app','.now.sh','127.0.0.1','locahost', 'https://app-react-sandjonyves.vercel.app/']
 
 
-CORS_ORIGIN_ALLOW_ALL=False
+CORS_ORIGIN_ALLOW_ALL=True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000'
+    'http://localhost:3000',
+   
 ]
 CORS_ORIGIN_REGEX_WHITELIST = [
     'http://localhost:3000'
+    'https://app-react-sandjonyves.vercel.app/'
 ]
 
 # Application definition

@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse,redirect
 from rest_framework.generics import ListAPIView,CreateAPIView
 from .models  import DataReact,DataEncadreur
 from .serializers import DataSerializers,DataSerializersE
@@ -12,20 +12,17 @@ from rest_framework.decorators import action
 @csrf_protect    
 def create_view(request, *arg,**kwargs):
     data = DataReact.objects.all()
- 
-    i=-1
-    a=0
-    for datas in data :
-        i=i+1
-    
+    data2 = DataReact.objects.latest('id')
+    tabClassSecondaire = ["6eme","5eme","4eme","3eme","2nd","1ere","Tel","SIL" ,"CP" , "CE1", "CE2", "CM1", "CM2"];
   
-    day = (data[i].jours).split(";")
-    matiere = data[i].matiere.split(";")
+  
+    day = (data2.jours).split(";")
+    matiere = data2.matiere.split(";")
     
     count2 = len(day)
     count  = len(matiere) 
     ctxx={
-         "data":data[i],
+         "data":data2,
                     'count':count,
                     'count2':count2,
     }
@@ -49,19 +46,30 @@ def create_view(request, *arg,**kwargs):
             
         if has_send:
             ctxx = {"msg":"mail envoyer avec succes",
-                    "data":data[i],
+                    "data":data2,
                     'count':count,
                     'count2':count2,
                     'i':True
                    }
+            return redirect('end')
         else:
             ctxx ={"msg":"erreur lors de l'envoi",
-                   "data":data[i],
+                   "data":data2,
                     'count':count,
                     'count2':count2,
-                    'i':False}    
+                    'i':False}
+    veryf = False      
+    for i in tabClassSecondaire:
+        for j in matiere:
+            if i==j:
+                veryf = True
 
-    return  render(request, 'index1.html',ctxx) 
+    if veryf :
+        return render (request,('index1.html',ctxx))
+    else:
+                         
+
+        return  render(request, 'indexA.html',ctxx) 
 
 
 
@@ -106,6 +114,7 @@ def create_view1(request, *arg,**kwargs):
                  
                     'i':True,
                    }
+            return redirect('end')
         else:
             ctxx ={"msg":"une erreur c'est produise veillez ressayer "
                   ,"data":data[i],}    
@@ -142,12 +151,9 @@ class CreateDataE(CreateAPIView):
 def create_view2(request, *arg,**kwargs):
   
     data = DataReact.objects.all()
-   
+    data2= DataReact.objects.latesgt('id')
   
-    i = int
-    i=0
-    for datas in data :
-        i=i+1
+ 
     
     if request.method == "POST":
         email = request.POST.get('email')
@@ -176,6 +182,9 @@ def create_view2(request, *arg,**kwargs):
                    
                    
                    }
+            return redirect('end')
+            
+            
             
         else:
             ctx ={"msg":"erreur lors de l'envoi"}    
@@ -192,3 +201,7 @@ def test(request,*arg,**kwargs):
     }
 
     return render(request,'index.html',context)
+  
+def end(request):
+    msg='votre requette à été envoyé avec succes '
+    return render(request,'end.html',{"msg":msg})  

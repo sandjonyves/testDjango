@@ -3,12 +3,7 @@
     
     "builds": [
       
-        { "src": "frontend/package.json", 
-        "use": "@vercel/static-build",
-         "config": { 
-          "buildCommand": "npm install && npm run build",
-          "outputDirectory": "build" }
-         },
+       
         {
         "src": "testdjango/wsgi.py",
         "use": "@vercel/python",
@@ -26,11 +21,9 @@
       {
         "src": "/(.*)",
         "dest": "testdjango/wsgi.py"
-      },
-      { "src": "/api/(.*)", 
-      "dest": "testdjango/wsgi.py" },
-      { "src": "/(.*)",
-       "dest": "build/index.html" }
+      }
+      
+      
     ]
    
   
